@@ -1,0 +1,93 @@
+#default configure for PXE menu
+#@author Tim Lauv
+#@credit http://releng.archlinux.org/pxeboot/boot/cfg/
+
+#default on using the text menu
+UI menu.c32
+PROMPT 0
+#title
+MENU TITLE PXE Bootloader (Tim Lauv 2016.3)
+
+#style
+MENU WIDTH 80
+MENU MARGIN 2
+MENU ROWS 14
+MENU VSHIFT 1
+MENU TIMEOUTROW 21
+MENU TABMSGROW 19
+MENU CMDLINEROW 21
+MENU HELPMSGROW 21
+MENU HELPMSGENDROW -1
+
+#menu - install x86_64 linux (debian, arch)
+MENU BEGIN linux64
+	MENU TITLE Linux Official Releases (64 Bit)
+
+	LABEL -
+		MENU LABEL back
+		MENU EXIT
+
+	MENU SEPARATOR
+
+	#empty line
+	#LABEL -
+	#	MENU LABEL 
+	#	MENU DISABLE
+
+	#menu item - arch linux
+	LABEL arch (not working atm)
+
+		TEXT HELP
+		Boot Arch Linux (x86_64) live medium.
+		Release 2016.03.01, mirror mirror.rackspace.com.
+		ENDTEXT
+
+		MENU LABEL Arch Linux x86_64 Netboot
+		MENU INDENT 1
+		LINUX installers/x86_64/arch/vmlinuz
+		INITRD installers/x86_64/arch/archiso.img raw
+		APPEND archiso_http_srv=http://mirror.rackspace.com/archlinux/iso/2016.03.01/ archisobasedir=arch vga=normal console=ttyS0,9600n8
+
+	#menu item - debian linux
+	LABEL debian
+
+		TEXT HELP
+		Boot Debian Linux (x86_64) netboot image.
+		Release 2016.01.23, ftp.nl.debian.org.
+		ENDTEXT
+
+		MENU LABEL Ubuntu (14.04 Trusty) Linux x86_64 Netboot
+		MENU INDENT 1
+		LINUX installers/x86_64/debian/linux
+		INITRD installers/x86_64/debian/initrd.gz
+		APPEND vga=normal console=ttyS0,9600n8
+MENU END
+
+MENU BEGIN hardware
+	MENU TITLE Hardware Information
+
+	LABEL -
+		MENU LABEL back
+		MENU EXIT
+
+	#empty line
+	#LABEL -
+	#	MENU LABEL 
+	#	MENU DISABLE
+
+	MENU SEPARATOR
+
+	# http://hdt-project.org/
+	LABEL hdt
+		MENU LABEL Hardware Information (HDT)
+		COM32 hdt.c32
+		APPEND modules_alias=modalias.gz pciids=pciids.gz
+MENU END
+
+LABEL reboot
+	MENU LABEL Reboot
+	COM32 reboot.c32
+
+LABEL poweroff
+	MENU LABEL Power Off
+	COMBOOT poweroff.com
