@@ -19,7 +19,7 @@ MENU CMDLINEROW 21
 MENU HELPMSGROW 21
 MENU HELPMSGENDROW -1
 
-#menu - install x86_64 linux (debian, arch)
+#menu - install x86_64 linux (debian)
 MENU BEGIN linux64
 	MENU TITLE Linux Official Releases (64 Bit)
 
@@ -34,29 +34,15 @@ MENU BEGIN linux64
 	#	MENU LABEL 
 	#	MENU DISABLE
 
-	#menu item - arch linux
-	LABEL arch (not working atm)
-
-		TEXT HELP
-		Boot Arch Linux (x86_64) live medium.
-		Release 2016.03.01, mirror mirror.rackspace.com.
-		ENDTEXT
-
-		MENU LABEL Arch Linux x86_64 Netboot
-		MENU INDENT 1
-		LINUX installers/x86_64/arch/vmlinuz
-		INITRD installers/x86_64/arch/archiso.img raw
-		APPEND archiso_http_srv=http://mirror.rackspace.com/archlinux/iso/2016.03.01/ archisobasedir=arch vga=normal console=ttyS0,9600n8
-
 	#menu item - debian linux
 	LABEL debian
 
 		TEXT HELP
 		Boot Debian Linux (x86_64) netboot image.
-		Release 2016.01.23, ftp.nl.debian.org.
+		Release 2016.03.15, ftp.nl.debian.org.
 		ENDTEXT
 
-		MENU LABEL Ubuntu (14.04 Trusty) Linux x86_64 Netboot
+		MENU LABEL Ubuntu 16.04 LTS (Xenial Xerus) Linux x86_64 Netboot
 		MENU INDENT 1
 		LINUX installers/x86_64/debian/linux
 		INITRD installers/x86_64/debian/initrd.gz
