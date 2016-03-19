@@ -32,7 +32,7 @@ com32/hdt/hdt.c32
 com32/modules/reboot.c32
 /modules/poweroff.com
 
-(into /boot if you prefer)
+(run ./extract-deployment.sh so the above files can be copied into /boot)
 
 4. create /boot/pxelinux.cfg/default menu
 see boot/pxelinux.cfg/
@@ -41,7 +41,8 @@ see boot/pxelinux.cfg/
 # /etc/dnsmasq.conf
 enable-tftp
 tftp-no-blocksize
-dhcp-boot=boot/pxelinux.0
+tftp-root=/mnt/pxe/boot
+dhcp-boot=pxelinux.0
 [#dhcp-option-force=209, boot/pxelinux.cfg/default]
 
 # cli
