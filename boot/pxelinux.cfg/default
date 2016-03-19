@@ -39,10 +39,9 @@ MENU BEGIN linux64
 
 		TEXT HELP
 		Boot Debian Linux (x86_64) netboot image.
-		Release 2016.03.15, ftp.nl.debian.org.
 		ENDTEXT
 
-		MENU LABEL Ubuntu 16.04 LTS (Xenial Xerus) Linux x86_64 Netboot
+		MENU LABEL Ubuntu 14.04 LTS Linux x86_64 Netboot
 		MENU INDENT 1
 		LINUX installers/x86_64/debian/linux
 		INITRD installers/x86_64/debian/initrd.gz
