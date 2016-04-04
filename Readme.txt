@@ -10,11 +10,13 @@ Prepare a custom PXE bootloader
 ===============================
 
 pre. connect to serial port (e.g tinyserial)
+
 ```
 sudo com /dev/ttyUSB0 115200 [or 9600]
 ```
 
 0. download syslinux (contains pxelinux)
+
 https://www.kernel.org/pub/linux/utils/boot/syslinux/
 or
 http://releng.archlinux.org/pxeboot/boot
@@ -30,6 +32,7 @@ Use v6+
  make bios efi64 installer
 
 2. we need:
+
 core/pxelinux.0 (bios only)
 com32/menu/menu.c32
 /memdisk/memdisk
@@ -40,10 +43,11 @@ com32/modules/reboot.c32
 
 (run ./extract-deployment.sh so the above files can be copied into /boot)
 
-4. create /boot/pxelinux.cfg/default menu
+3. create /boot/pxelinux.cfg/default menu
 see boot/pxelinux.cfg/
 
-5. modify dnsmasq to point to boot
+4. modify dnsmasq to point to boot
+
 # /etc/dnsmasq.conf
 enable-tftp
 tftp-no-blocksize
@@ -51,7 +55,8 @@ tftp-root=/mnt/pxe/boot
 dhcp-boot=pxelinux.0
 [#dhcp-option-force=209, boot/pxelinux.cfg/default]
 
-6. enable dns and dhcp
+5. enable dns and dhcp
+# /etc/dnsmasq.conf
 see Appendix A
 
 # cli
