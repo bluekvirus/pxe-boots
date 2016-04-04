@@ -62,6 +62,7 @@ see Appendix A
 # cli
 sudo systemctl restart dnsmasq
 journalctl -u dnsmasq -f
+cat /var/lib/misc/dnsmasq.leases
 
 ===============================
 Appendix A - Share internet (as router)
