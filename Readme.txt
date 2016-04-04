@@ -8,6 +8,12 @@ Prepare a custom PXE bootloader
 @ref http://www.syslinux.org/wiki/index.php?title=Doc/building
 @ref http://releng.archlinux.org/pxeboot/boot/cfg
 ===============================
+
+pre. connect to serial port (e.g tinyserial)
+```
+sudo com /dev/ttyUSB0 115200 [or 9600]
+```
+
 0. download syslinux (contains pxelinux)
 https://www.kernel.org/pub/linux/utils/boot/syslinux/
 or
@@ -44,6 +50,9 @@ tftp-no-blocksize
 tftp-root=/mnt/pxe/boot
 dhcp-boot=pxelinux.0
 [#dhcp-option-force=209, boot/pxelinux.cfg/default]
+
+6. enable dns and dhcp
+see Appendix A
 
 # cli
 sudo systemctl restart dnsmasq
