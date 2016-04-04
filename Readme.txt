@@ -9,10 +9,10 @@ Prepare a custom PXE bootloader
 @ref http://releng.archlinux.org/pxeboot/boot/cfg
 ===============================
 
-pre. connect to serial port (e.g tinyserial)
+pre. connect to serial port (e.g tinyserial or teletype)
 
 ```
-sudo com /dev/ttyUSB0 115200 [or 9600]
+sudo teletype [or com] /dev/ttyUSB0 115200 [or 9600]
 ```
 
 0. download syslinux (contains pxelinux)
